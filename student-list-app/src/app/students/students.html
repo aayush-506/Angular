@@ -1,0 +1,17 @@
+<div class="shadow-lg rounded rounded-lg w-[50vw] text-white">
+
+    <div class="flex items-center justify-between h-16">
+        <h1 class="text-3xl pl-9 ">{{ student.id }}. {{ student.name }}</h1>
+        <h1 (click)="updateShow(student.id)" 
+        [class.text-yellow-700] = "select_id === student.id"
+        [class.text-blue-700] = "select_id != student.id"
+
+        class="pr-9 text-xl underline cursor-pointer"> {{ select_id === student.id ? 'Hide details' : 'Show details' }}</h1>
+        </div>
+
+    <div class="px-9">
+        <p *ngIf="select_id === student.id " >{{ student.detail }}</p>
+    </div>
+
+
+</div>
