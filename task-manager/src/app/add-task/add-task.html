@@ -1,9 +1,9 @@
 <div class="flex items-center justify-center gap-4 pt-29">
     <div class="text-white border border-white h-fit w-fit rounded-lg">
-        <input class="h-9 w-219 outline-none text-center" type="text" placeholder="Enter your tasks Here">
+        <input [(ngModel)]="newTask" class="h-9 w-219 outline-none text-center" type="text" placeholder="Enter your tasks Here">
     </div>
 
-    <button class="text-white text-xl h-fit w-fit px-3 py-1 rounded-lg border bg-indigo-600 cursor-pointer">
+    <button (click)="addTask()" class="text-white text-xl h-fit w-fit px-3 py-1 rounded-lg border bg-indigo-600 cursor-pointer">
         Add Task
     </button>
 

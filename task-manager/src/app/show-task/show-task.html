@@ -1,8 +1,8 @@
 <div class="text-white flex pl-69 pr-100 mt-9">
   <ul class="list-disc list-xl pl-5 text-white text-2xl">
 
-    <div class="flex gap-2 mb-4">
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, minima! Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, veniam.</li>
+    <div *ngFor="let item of items" class="flex gap-2 mb-4">
+        <li>{{item.task}}</li>
         <button class="border h-fit px-2 rounded-lg bg-red-900 cursor-pointer">Delete</button>
     </div>
 
