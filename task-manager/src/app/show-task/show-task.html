@@ -3,7 +3,7 @@
 
     <div *ngFor="let item of items" class="flex gap-2 mb-4">
         <li>{{item.task}}</li>
-        <button class="border h-fit px-2 rounded-lg bg-red-900 cursor-pointer">Delete</button>
+        <button (click)="removeTask(item.id)" class="border h-fit px-2 rounded-lg bg-red-900 cursor-pointer">Delete</button>
     </div>
 
    

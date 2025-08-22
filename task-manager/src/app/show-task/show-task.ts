@@ -16,5 +16,9 @@ constructor(private data:Tasks){}
 ngOnInit(){
   this.items = this.data.getTask();
 }
+removeTask(id:number):void{
+ this.data.removeTask(id);
+ this.items = this.data.getTask();
+}
 
 }
