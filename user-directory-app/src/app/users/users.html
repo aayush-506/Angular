@@ -3,7 +3,7 @@
 <div *ngFor="let user of userDetails" class="h-[140px] mx-2 bg-gray-700 flex mt-2 outer-div">
              <h1 class="ml-4 pt-9 text-3xl">{{user.id}}.</h1>
              <div class="h-[100px] w-[100px] bg-white mt-5 ml-4">
-                <img src="{{user.image}}" alt="">
+                <img src="{{user.image}}" alt="image{{user.id}}">
              </div>
              <div class="pt-4 pl-7">
                  <h1 class="text-3xl">{{user.firstName}}</h1>
