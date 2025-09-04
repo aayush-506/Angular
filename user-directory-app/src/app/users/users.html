@@ -1,28 +1,18 @@
 <div class="text-white border m-3 grid grid-cols-2">
 
-<div class="h-[140px] mx-2 bg-gray-700 flex mt-2 outer-div">
-
-             <h1 class="ml-4 pt-9 text-3xl">1.</h1>
-             <div class="h-[100px] w-[100px] bg-white mt-5 ml-4"></div>
+<div *ngFor="let user of userDetails" class="h-[140px] mx-2 bg-gray-700 flex mt-2 outer-div">
+             <h1 class="ml-4 pt-9 text-3xl">{{user.id}}.</h1>
+             <div class="h-[100px] w-[100px] bg-white mt-5 ml-4">
+                <img src="{{user.image}}" alt="">
+             </div>
              <div class="pt-4 pl-7">
-                 <h1 class="text-3xl">Emily Smith</h1>
-                 <h1>Role : Sales Manager</h1>
-                 <h1>Dept : Engineering</h1>
-                 <h1>Email : emily.johnson@x.dummyjson.com</h1>
+                 <h1 class="text-3xl">{{user.firstName}}</h1>
+                 <h1>Role : {{user.company.title}}</h1>
+                 <h1>Dept : {{user.company.department}}</h1>
+                 <h1>Email : {{user.email}}</h1>
              </div>
 </div>
 
-<div class="h-[140px] mx-2 bg-gray-700 flex mt-2 outer-div">
-
-             <h1 class="ml-4 pt-9 text-3xl">1.</h1>
-             <div class="h-[100px] w-[100px] bg-white mt-5 ml-4"></div>
-             <div class="pt-4 pl-7">
-                 <h1 class="text-3xl">Emily Smith</h1>
-                 <h1>Role : Sales Manager</h1>
-                 <h1>Dept : Engineering</h1>
-                 <h1>Email : emily.johnson@x.dummyjson.com</h1>
-             </div>
-</div>
 
 
 </div>
