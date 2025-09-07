@@ -1,0 +1,33 @@
+<div class="h-full w-full flex justify-center items-center app-container">
+
+    <div class="h-[65%] w-[30%] card">
+
+    <h1 class="text-4xl pl-[70px] pt-[70px] font-bold mb-[70px]">Admin's Login</h1>
+
+      <form class="example-form" action="">
+
+         <mat-form-field class="example-full-width">
+         <mat-label>Username</mat-label>
+         <input matInput placeholder="Enter your username" name="username" value="">
+         </mat-form-field>
+
+         <mat-form-field class="example-full-width">
+         <mat-label>Password</mat-label>
+         <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          [(ngModel)]="password" name="password"
+          placeholder="Enter your password"
+         />
+         <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+         <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+         </button>
+         </mat-form-field>
+
+         <button matFab extended class="my-fab">
+          Login
+        </button>
+
+       </form>
+    </div>
+</div>
