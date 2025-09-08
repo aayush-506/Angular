@@ -7,5 +7,5 @@ import { EditUser } from './edit-user/edit-user';
 export const routes: Routes = [
     {path:'' ,component:Users},
     {path:'newUser', component:NewUser},
-    {path:'editUser' , component:EditUser} 
+    {path:'editUser/:id' , component:EditUser} 
 ];

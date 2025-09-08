@@ -18,4 +18,8 @@ addUser(user:any){
   return this.http.post(`${this.url}`,user);
 }
 
+editUser(id:number | string,data:any){
+  return this.http.patch(`${this.url}/${id}`,data);
+}
+
 }
