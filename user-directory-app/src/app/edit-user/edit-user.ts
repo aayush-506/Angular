@@ -20,6 +20,7 @@ export class EditUser {
       role : new FormControl(''),
       dept : new FormControl(''),
       email : new FormControl(''),
+      image : new FormControl('')
        })
 
       ngOnInit() {
@@ -32,6 +33,7 @@ export class EditUser {
        const user = {
            firstName : this.editUser.value.name,
            email: this.editUser.value.email,
+           image: this.editUser.value.image,
            company: {
            department : this.editUser.value.dept,
            title : this.editUser.value.role

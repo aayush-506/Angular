@@ -2,7 +2,7 @@
     <h1 class="uppercase text-yellow-600 mb-5 text-3xl">Update User</h1>
 </div>
 <div class="flex justify-center items-center">
-    <form [formGroup]="editUser" (ngSubmit)="onSubmit()" class="h-[450px] w-[500px] bg-gray-500 rounded-xl flex justify-center" action="">
+    <form [formGroup]="editUser" (ngSubmit)="onSubmit()" class="h-[530px] w-[500px] bg-gray-500 rounded-xl flex justify-center" action="">
         <div class="mt-[50px]">
             <label class="text-2xl text-white" for="">Name :</label>
             <input class="block border border-white rounded-lg h-9 w-[400px] mb-2 pl-3" placeholder="Enter name" type="text" formControlName="name">
@@ -12,6 +12,8 @@
             <input class="block border border-white rounded-lg h-9 w-[400px] mb-2 pl-3" placeholder="Enter department" type="text" formControlName="dept">
              <label class="text-2xl text-white" for="">Email :</label>
             <input class="block border border-white rounded-lg h-9 w-[400px] mb-2 pl-3" placeholder="Enter email" type="text" formControlName="email">
+             <label class="text-2xl text-white" for="">Profile Url :</label>
+            <input class="block border border-white rounded-lg h-9 w-[400px] mb-2 pl-3" placeholder="Enter image url" type="text" formControlName="image">
             <button class="border px-2 rounded-lg text-2xl ml-[140px] mt-[30px] bg-yellow-700 text-white cursor-pointer">Update User</button>
         </div>
     </form>
