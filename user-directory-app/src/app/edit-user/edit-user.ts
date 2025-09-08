@@ -41,7 +41,6 @@ export class EditUser {
             this.userData.editUser(this.userId , user).subscribe({
              next: (res) => {
                  console.log("User updated:", res);
-                 alert("User updated successfully!");
                   this.router.navigate(['/']); 
               }
           })
