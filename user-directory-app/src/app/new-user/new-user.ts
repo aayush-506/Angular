@@ -18,7 +18,8 @@ export class NewUser {
     name: new FormControl(''),
     role: new FormControl(''),
     dept: new FormControl(''),
-    email: new FormControl('')
+    email: new FormControl(''),
+    image: new FormControl('')
   })
 
   onSubmit(){
@@ -26,6 +27,7 @@ export class NewUser {
     const user = {
       firstName : this.newUser.value.name,
       email: this.newUser.value.email,
+      image: this.newUser.value.image,
       company: {
         department : this.newUser.value.dept,
         title : this.newUser.value.role
