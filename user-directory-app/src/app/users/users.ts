@@ -2,10 +2,11 @@ import { Component,ChangeDetectorRef } from '@angular/core';
 import { UserData } from '../services/user-data';
 import { CommonModule } from '@angular/common';
 import { SearchBar } from '../search-bar/search-bar';
+import { RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-users',
-  imports: [CommonModule,SearchBar],
+  imports: [CommonModule,SearchBar,RouterLink],
   templateUrl: './users.html',
   styleUrl: './users.scss'
 })
