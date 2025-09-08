@@ -6,12 +6,16 @@
              <div class="h-[100px] w-[100px] bg-white mt-5 ml-4">
                 <img src="{{user.image}}" alt="image{{user.id}}">
              </div>
-             <div class="pt-4 pl-7">
+             <div class="pt-4 pl-7 w-[395px]">
                  <h1 class="text-3xl">{{user.firstName}} {{user.lastName}}</h1>
                  <h1>Role : {{user.company.title}}</h1>
                  <h1>Dept : {{user.company.department}}</h1>
                  <h1>Email : {{user.email}}</h1>
-             </div>
+             </div> 
+
+                 <button routerLink="editUser" class="border h-7 mr-3 rounded-lg bg-yellow-700 px-2 mt-[100px] cursor-pointer" >Edit</button>
+                 <button class="border h-7 mr-3 rounded-lg bg-red-900 px-2 mt-[100px] cursor-pointer" >Delete</button>
+
 </div>
 
 
