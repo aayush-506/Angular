@@ -22,4 +22,9 @@ editUser(id:number | string,data:any){
   return this.http.patch(`${this.url}/${id}`,data);
 }
 
+removeUser(id: string | number) {
+  return this.http.delete(`${this.url}/${id}`);
+}
+
+
 }

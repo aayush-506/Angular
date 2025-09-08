@@ -43,4 +43,13 @@ export class Users {
        }
     }
 
+    deleteUser(userId : string | number){
+      this.userData.removeUser(userId).subscribe({
+        next: ()=>{
+          console.log("user deleted sucessfully",userId);
+          this.getUser();
+        }
+      })
+    }
+
 }
