@@ -22,7 +22,7 @@ export class Users {
 
     getUser(){
       this.userData.getData().subscribe((data:any)=>{
-          this.userDetails = data.users; 
+          this.userDetails = data; 
           this.filteredUser = [...this.userDetails];
           console.log(this.userDetails);
           console.log(this.filteredUser);
