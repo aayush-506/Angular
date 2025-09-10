@@ -1,10 +1,10 @@
 
   <mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" opened class="example-sidenav">
+    <mat-sidenav mode="side" [opened]="isOpened" class="example-sidenav">
         <app-sidenav></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
-        <h1>Dashboard</h1>
+        <app-navbar></app-navbar>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
