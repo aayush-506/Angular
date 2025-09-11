@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { MatModule } from '../../appModules/mat-module';
 import { DashboardData } from '../../service/dashboard-data';
+import { Searchbar } from '../searchbar/searchbar';
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatModule],
+  imports: [MatModule,Searchbar],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
