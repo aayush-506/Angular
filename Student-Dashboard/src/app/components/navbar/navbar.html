@@ -4,10 +4,11 @@
   </button>
    <app-searchbar></app-searchbar>
   <span class="example-spacer"></span>
-  <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <!-- <button matIconButton class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>favorite</mat-icon>
-  </button>
-  <button matIconButton class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
+  </button> -->
+
+  <div [hidden]="showProfile" class="bg-zinc-500 h-[40px] w-[40px] ml-9 rounded-full mr-9"></div>
+  
+  
 </mat-toolbar>

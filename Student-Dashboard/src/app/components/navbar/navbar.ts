@@ -11,9 +11,16 @@ import { Searchbar } from '../searchbar/searchbar';
 })
 export class Navbar {
 
+  showProfile = true;
+
   constructor(private dashboardData : DashboardData){}
   isSidenav(){
     this.dashboardData.sidenavToggle();
+  }
+  ngOnInit(){
+    this.dashboardData.sidenavState.subscribe({
+      next : result => this.showProfile = result 
+    })
   }
 
 }
