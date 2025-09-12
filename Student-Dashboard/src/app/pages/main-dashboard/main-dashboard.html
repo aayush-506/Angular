@@ -3,10 +3,24 @@
     <mat-sidenav mode="side" [opened]="isOpened" class="example-sidenav">
         <app-sidenav></app-sidenav>
     </mat-sidenav>
-    <mat-sidenav-content>
-        <app-navbar></app-navbar>
-        <h1 class="text-3xl ml-20 mt-9">Welcome back, Aayush! 👋</h1>
-        <h1 class="ml-22 mt-2 text-md">Thursday, September 11, 2025</h1>
-    </mat-sidenav-content>
+<mat-sidenav-content>
+  <app-navbar></app-navbar>
+  
+  <div class="content-div">
+    <app-greeting-heading></app-greeting-heading>
+    <div class="small-card">
+      <app-small-card-dashboard></app-small-card-dashboard>
+      <app-small-card-dashboard></app-small-card-dashboard>
+      <app-small-card-dashboard></app-small-card-dashboard>
+      <app-small-card-dashboard></app-small-card-dashboard>
+    </div>
+    <div class="large-div">
+      <app-large-card-dashboard></app-large-card-dashboard>
+      <app-large-card-dashboard></app-large-card-dashboard>
+    </div>
+  </div>
+
+</mat-sidenav-content>
+
   </mat-sidenav-container>
 

@@ -3,10 +3,13 @@ import { MatModule } from '../../appModules/mat-module';
 import { Sidenav } from '../../components/sidenav/sidenav';
 import { Navbar } from '../../components/navbar/navbar';
 import { DashboardData } from '../../service/dashboard-data';
+import { SmallCardDashboard } from '../../components/small-card-dashboard/small-card-dashboard';
+import { GreetingHeading } from '../../components/greeting-heading/greeting-heading';
+import { LargeCardDashboard } from '../../components/large-card-dashboard/large-card-dashboard';
 
 @Component({
   selector: 'app-main-dashboard',
-  imports: [MatModule,Sidenav,Navbar],
+  imports: [MatModule,Sidenav,Navbar,SmallCardDashboard,GreetingHeading,LargeCardDashboard],
   templateUrl: './main-dashboard.html',
   styleUrl: './main-dashboard.scss'
 })
