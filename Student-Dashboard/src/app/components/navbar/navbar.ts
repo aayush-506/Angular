@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { MatModule } from '../../appModules/mat-module';
 import { DashboardData } from '../../service/dashboard-data';
 import { Searchbar } from '../searchbar/searchbar';
+import { NotificationIcon } from '../notification-icon/notification-icon';
 
 @Component({
   selector: 'app-navbar',
-  imports: [MatModule,Searchbar],
+  imports: [MatModule,Searchbar,NotificationIcon],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
