@@ -6,7 +6,7 @@
 <mat-sidenav-content>
   <app-navbar></app-navbar>
   
-  <div class="content-div">
+<div [ngClass]="isOpened ? 'new-content-div' : 'content-div'">
     <app-greeting-heading></app-greeting-heading>
     <div class="small-card">
       <app-small-card-dashboard></app-small-card-dashboard>
@@ -18,7 +18,7 @@
       <app-large-card-dashboard></app-large-card-dashboard>
       <app-large-card-dashboard></app-large-card-dashboard>
     </div>
-  </div>
+</div>
 
 </mat-sidenav-content>
 
