@@ -1,9 +1,9 @@
 <div class="h-[130px] w-[280px] border border-zinc-300 rounded-2xl flex px-9 justify-between shadow-lg hover:shadow-xl mt-7">
     <div>
-        <h1 class="pt-7 text-md">Current GPA</h1>
+        <h1 class="pt-7 text-md">{{card.title}}</h1>
         <h1 class="text-xl">3.8/4.0</h1>
     </div>
-    <div class="mt-8 h-10 w-11 rounded-lg  bg-green-100 flex justify-center items-center">
-        <mat-icon class="!text-green-500">school</mat-icon>
+    <div [ngStyle]="{'background-color':card.iconBg}" class="mt-8 h-10 w-11 rounded-lg flex justify-center items-center">
+        <mat-icon [ngStyle]="{'color':card.iconColor}">{{card.icon}}</mat-icon>
     </div>
 </div>
