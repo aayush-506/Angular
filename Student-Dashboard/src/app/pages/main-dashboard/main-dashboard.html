@@ -3,16 +3,13 @@
     <mat-sidenav mode="side" [opened]="isOpened" class="example-sidenav">
         <app-sidenav></app-sidenav>
     </mat-sidenav>
-<mat-sidenav-content>
+ <mat-sidenav-content>
   <app-navbar></app-navbar>
   
 <div [ngClass]="isOpened ? 'new-content-div' : 'content-div'">
     <app-greeting-heading></app-greeting-heading>
     <div class="small-card">
-      <app-small-card-dashboard></app-small-card-dashboard>
-      <app-small-card-dashboard></app-small-card-dashboard>
-      <app-small-card-dashboard></app-small-card-dashboard>
-      <app-small-card-dashboard></app-small-card-dashboard>
+      <app-small-card-dashboard *ngFor="let card of smallCards" [card]="card"></app-small-card-dashboard>
     </div>
     <div class="large-div">
       <app-large-card-dashboard></app-large-card-dashboard>
