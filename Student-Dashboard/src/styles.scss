@@ -30,6 +30,17 @@ body {
   color: var(--mat-sys-on-surface);
   // font: var(--mat-sys-body-medium); ( because it is blocking the tailwind font sizes)
 
+  .mat-mdc-list-item.mdc-list-item::before {
+  background-color: transparent !important; // remove gray
+}
+
+.mat-mdc-list-item.mdc-list-item:hover {
+  background-color: #e0f2fe !important; // light blue hover
+  border-radius: 12px;
+}
+
+
+
   // Reset the user agent margin.
   margin: 0;
 }
