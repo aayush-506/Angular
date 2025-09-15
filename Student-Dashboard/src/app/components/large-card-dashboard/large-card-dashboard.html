@@ -1,7 +1,8 @@
 <div class="h-[470px] w-[580px] border border-zinc-300 rounded-2xl  px-9 mt-6  shadow-lg hover:shadow-xl">
     <div class="flex justify-between mb-7">
         <h1 class="mt-6 text-xl">{{largeCard.title}}</h1>
-         <h1 class="mt-7 text-blue-700 cursor-pointer hover:underline">View All →</h1>
+         <a routerLink="/assignments" *ngIf="largeCard.title=='Upcoming Assignments'"  class="mt-7 text-blue-700 cursor-pointer hover:underline">View All →</a>
+         <a routerLink="/grades" *ngIf="largeCard.title=='Recent Grades'" class="mt-7 text-blue-700 cursor-pointer hover:underline">View All →</a>
     </div>
    
     <div *ngIf="largeCard.title=='Upcoming Assignments'" class="Assignments-div">
