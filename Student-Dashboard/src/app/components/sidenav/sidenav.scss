@@ -3,6 +3,14 @@
     margin-bottom: 10px;
     width: 210px;
 }
+.items:hover {
+  background-color: #e0f2fe !important;  /* light blue instead of gray */
+}
+.active-link {
+  background-color: #e0f2fe !important;  // light blue (example)
+  border-radius: 8px;
+}
+
 .logout{
     margin-left: 20px;
     margin-bottom: 10px;
