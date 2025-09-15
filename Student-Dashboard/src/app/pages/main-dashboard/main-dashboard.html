@@ -9,11 +9,10 @@
 <div [ngClass]="isOpened ? 'new-content-div' : 'content-div'">
     <app-greeting-heading></app-greeting-heading>
     <div class="small-card">
-      <app-small-card-dashboard *ngFor="let card of smallCards" [card]="card"></app-small-card-dashboard>
+      <app-small-card-dashboard *ngFor="let smallCard of smallCards" [smallCard]="smallCard"></app-small-card-dashboard>
     </div>
     <div class="large-div">
-      <app-large-card-dashboard></app-large-card-dashboard>
-      <app-large-card-dashboard></app-large-card-dashboard>
+       <app-large-card-dashboard *ngFor="let largeCard of largeCards" [largeCard]="largeCard"></app-large-card-dashboard> 
     </div>
 </div>
 
