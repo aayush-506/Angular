@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SmallCardDashboard {
-@Input() card!: {       
+@Input() smallCard!: {       
     title: string;
     icon: string;
     iconColor: string;
