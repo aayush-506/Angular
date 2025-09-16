@@ -1,0 +1,62 @@
+<h1 *ngIf="category == 'core' || category == 'practical' " class="text-2xl font-bold text-blue-800 capitalize mb-6">
+  {{ category }} Subjects
+</h1>
+<h1 *ngIf="category == 'projects' || category == 'Certification' " class="text-2xl font-bold text-blue-800 capitalize mb-6">
+  {{ category }} 
+</h1>
+
+<!-- Core Subjects -->
+<div *ngIf="category == 'core'" class="space-y-3 mr-[100px]">
+  <div class="p-4 bg-gray-100 rounded-lg shadow hover:bg-gray-200 transition">
+    <h2 class="font-semibold text-gray-800">Mathematics</h2>
+    <p class="text-sm text-gray-600">Covers Algebra, Calculus, and Probability.</p>
+    <p class="text-sm font-medium text-blue-700 mt-1">Credits: 4</p>
+  </div>
+  <div class="p-4 bg-gray-100 rounded-lg shadow hover:bg-gray-200 transition">
+    <h2 class="font-semibold text-gray-800">Physics</h2>
+    <p class="text-sm text-gray-600">Mechanics, Thermodynamics, and Optics.</p>
+    <p class="text-sm font-medium text-blue-700 mt-1">Credits: 3</p>
+  </div>
+</div>
+
+<!-- Projects -->
+<div *ngIf="category === 'projects'" class="space-y-3 mr-[100px]">
+  <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg shadow">
+    <h2 class="font-semibold text-blue-800">AI-based Chatbot</h2>
+    <p class="text-sm text-gray-600">Using NLP and Angular frontend.</p>
+    <p class="text-sm font-medium text-blue-700 mt-1">Credits: 6</p>
+  </div>
+  <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg shadow">
+    <h2 class="font-semibold text-blue-800">IoT Smart Farming</h2>
+    <p class="text-sm text-gray-600">Crop monitoring with sensors & data visualization.</p>
+    <p class="text-sm font-medium text-blue-700 mt-1">Credits: 5</p>
+  </div>
+</div>
+
+<!-- Lab / Practical Subjects -->
+<div *ngIf="category === 'practical'" class="space-y-3 mr-[100px]">
+  <div class="p-4 bg-green-50 border border-green-200 rounded-lg shadow">
+    <h2 class="font-semibold text-green-800">Physics Lab</h2>
+    <p class="text-sm text-gray-600">Experiments on optics and electronics.</p>
+    <p class="text-sm font-medium text-blue-700 mt-1">Credits: 2</p>
+  </div>
+  <div class="p-4 bg-green-50 border border-green-200 rounded-lg shadow">
+    <h2 class="font-semibold text-green-800">Chemistry Lab</h2>
+    <p class="text-sm text-gray-600">Organic and inorganic practical sessions.</p>
+    <p class="text-sm font-medium text-blue-700 mt-1">Credits: 2</p>
+  </div>
+</div>
+
+<!-- Skill-based / Certification -->
+<div *ngIf="category === 'Certification'" class="space-y-3 mr-[100px]">
+  <div class="p-4 bg-purple-50 border border-purple-200 rounded-lg shadow">
+    <h2 class="font-semibold text-purple-800">Web Development Bootcamp</h2>
+    <p class="text-sm text-gray-600">HTML, CSS, JavaScript, Angular.</p>
+    <p class="text-sm font-medium text-blue-700 mt-1">Credits: 3</p>
+  </div>
+  <div class="p-4 bg-purple-50 border border-purple-200 rounded-lg shadow">
+    <h2 class="font-semibold text-purple-800">Data Science Certification</h2>
+    <p class="text-sm text-gray-600">Python, Pandas, Machine Learning basics.</p>
+    <p class="text-sm font-medium text-blue-700 mt-1">Credits: 4</p>
+  </div>
+</div>
