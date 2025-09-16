@@ -5,6 +5,7 @@ import { Attendence } from './pages/attendence/attendence';
 import { Grades } from './pages/grades/grades';
 import { Assignments } from './pages/assignments/assignments';
 import { Announcements } from './pages/announcements/announcements';
+import { CoursesDetails } from './pages/courses-details/courses-details';
 
 
 export const routes: Routes = [
@@ -13,5 +14,6 @@ export const routes: Routes = [
 {path:"attendance" , component:Attendence},
 {path:"grades" , component:Grades},
 {path:"assignments" , component:Assignments},
-{path:"announcements" , component:Announcements}
+{path:"announcements" , component:Announcements},
+{path:"courses/:category",component:CoursesDetails}
 ];
