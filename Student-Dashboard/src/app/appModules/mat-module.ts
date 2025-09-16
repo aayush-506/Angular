@@ -10,6 +10,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const modules = [
   MatFormFieldModule,
@@ -22,6 +23,7 @@ const modules = [
    MatCardModule,
    MatProgressBarModule,
    MatBadgeModule,
+   MatExpansionModule
 ];
 
 
