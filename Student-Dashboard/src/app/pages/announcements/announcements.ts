@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { DashboardData } from '../../service/dashboard-data';
 import { CommonModule } from '@angular/common';
+import { Announcement } from '../../Interfaces/announcement';
 
 @Component({
   selector: 'app-announcements',
@@ -10,19 +11,17 @@ import { CommonModule } from '@angular/common';
 })
 export class Announcements {
 
-announcements : any[] = [];
-constructor(private dashboardData : DashboardData , private cdr : ChangeDetectorRef){}
+announcements : Announcement[] = [];
+constructor(private dashboardDataService : DashboardData , private cdr : ChangeDetectorRef){}
 
 ngOnInit(){
-  this.getAnnouncements();
-}
-
-getAnnouncements(){
-  this.dashboardData.getAnnouncementsData().subscribe((data:any)=>{
+  this.dashboardDataService.loadAnnouncements();
+  this.dashboardDataService.getAnnouncementsData().subscribe(data=>{
     this.announcements = data ;
     console.log(this.announcements);
-    this.cdr.detectChanges();
+     this.cdr.detectChanges();
   })
 }
+
 
 }
