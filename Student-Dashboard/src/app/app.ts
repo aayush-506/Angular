@@ -19,10 +19,11 @@ export class App {
   protected readonly title = signal('Student-Dashboard');
     isOpened = false;
 
-  constructor(private dashboardData: DashboardData) {}
+  constructor(private dashboardDataService: DashboardData) {}
 
   ngOnInit() {
-    this.dashboardData.sidenavState.subscribe({
+    this.dashboardDataService.loadAnnouncements();
+    this.dashboardDataService.sidenavState.subscribe({
       next: (result) => {
         this.isOpened = result;
         console.log("updated value :", result);
