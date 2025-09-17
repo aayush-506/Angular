@@ -6,9 +6,9 @@
     <div class="h-[160px] w-[350px] border border-gray-300 rounded-2xl flex px-6 justify-between shadow-lg hover:shadow-xl mt-4 bg-white">
       <div class="flex flex-col justify-center gap-1">
         <h3 class="text-lg font-medium">Assignments</h3>
-        <p class="text-md text-gray-700">Pending: 3</p>
-        <p class="text-md text-gray-700">Overdue: 2</p>
-        <p class="text-md text-gray-700">Submitted: 5</p>
+        <p class="text-md text-gray-700">Pending: {{pendingCount | async}}</p>
+        <p class="text-md text-gray-700">Overdue: {{overdueCount | async}}</p>
+        <p class="text-md text-gray-700">Submitted: {{submittedCount | async}}</p>
       </div>
       <div class="icon mt-6 h-10 w-11 rounded-lg flex justify-center items-center bg-blue-100 text-blue-700">
         <mat-icon>assignment_turned_in</mat-icon>
@@ -21,83 +21,59 @@
     <div class="mr-[100px]">
       <mat-accordion>
         <!-- Pending -->
-        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+        <mat-expansion-panel *ngIf="pendingAssignments | async as pendingAssignments" (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="text-xl mr-2">⏳</span>
               <span class="text-lg font-bold">Pending Assignments</span>
             </mat-panel-title>
             <mat-panel-description class="!ml-[172px] text-gray-700">
-              3 assignments pending
+              {{pendingCount | async}} assignments pending
             </mat-panel-description>
           </mat-expansion-panel-header>
-         <ul class="list-disc pl-6 py-2 space-y-2">
-             <li class="bg-gray-100 rounded-lg flex justify-between p-3 shadow-sm hover:bg-gray-200 transition">
-                <span class="font-semibold text-gray-800">Assignment 1 - Physics</span>
-                <span class="text-gray-500 text-sm ml-2">(Due: 20 Aug 2025)</span>
-              </li>
-              <li class="bg-gray-100 rounded-lg p-3 flex justify-between shadow-sm hover:bg-gray-200 transition">
-                <span class="font-semibold text-gray-800">Assignment 2 - Math</span>
-                <span class="text-gray-500 text-sm ml-2">(Due: 22 Aug 2025)</span>
-              </li>
-              <li class="bg-gray-100 rounded-lg p-3 flex justify-between shadow-sm hover:bg-gray-200 transition">
-                 <span class="font-semibold text-gray-800">Assignment 3 - Chemistry</span>
-                 <span class="text-gray-500 text-sm ml-2">(Due: 25 Aug 2025)</span>
+         <ul  class="list-disc pl-6 py-2 space-y-2">
+             <li *ngFor="let pendingAssignment of pendingAssignments"  class="bg-gray-100 rounded-lg flex justify-between p-3 shadow-sm hover:bg-gray-200 transition">
+                <span class="font-semibold text-gray-800">{{pendingAssignment.title}}</span>
+                <span class="text-gray-500 text-sm ml-2">{{pendingAssignment.dueDate}}</span>
               </li>
           </ul>
 
         </mat-expansion-panel>
 
         <!-- Missed -->
-        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+        <mat-expansion-panel *ngIf="overdueAssignments | async as overdueAssignments" (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="text-xl mr-2">⚠️</span>
               <span class="text-lg font-bold">Missed Assignments</span>
             </mat-panel-title>
             <mat-panel-description class="!ml-[172px] text-gray-700">
-              2 overdue assignments
+              {{overdueCount | async}} overdue assignments
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <ul class="list-disc pl-6 py-2 space-y-2">
-             <li class="bg-gray-100 rounded-lg p-3 flex justify-between shadow-sm hover:bg-gray-200 transition">
-                <span class="font-semibold text-gray-800">Assignment 1 - Physics</span>
-                <span class="text-gray-500 text-sm ml-2">(Last Date: 20 Aug 2025)</span>
-              </li>
-              <li class="bg-gray-100 rounded-lg p-3 flex justify-between shadow-sm hover:bg-gray-200 transition">
-                <span class="font-semibold text-gray-800">Assignment 2 - Math</span>
-                <span class="text-gray-500 text-sm ml-2">(Last Date: 22 Aug 2025)</span>
-              </li>
-              <li class="bg-gray-100 rounded-lg p-3 flex justify-between shadow-sm hover:bg-gray-200 transition">
-                 <span class="font-semibold text-gray-800">Assignment 3 - Chemistry</span>
-                 <span class="text-gray-500 text-sm ml-2">(Last Date: 25 Aug 2025)</span>
+       <ul  class="list-disc pl-6 py-2 space-y-2">
+             <li *ngFor="let overdueAssignment of overdueAssignments"  class="bg-gray-100 rounded-lg flex justify-between p-3 shadow-sm hover:bg-gray-200 transition">
+                <span class="font-semibold text-gray-800">{{overdueAssignment.title}}</span>
+                <span class="text-gray-500 text-sm ml-2">{{overdueAssignment.dueDate}}</span>
               </li>
           </ul>
         </mat-expansion-panel>
 
         <!-- Submitted -->
-        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+        <mat-expansion-panel *ngIf="submittedAssignments | async as submittedAssignments" (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <span class="text-xl mr-2">✅</span>
               <span class="text-lg font-bold">Submitted Assignments</span>
             </mat-panel-title>
             <mat-panel-description class="!ml-[172px] text-gray-700">
-              5 assignments submitted
+              {{submittedCount | async}} assignments submitted
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <ul class="list-disc pl-6 py-2 space-y-2">
-             <li class="bg-gray-100 rounded-lg p-3 flex justify-between shadow-sm hover:bg-gray-200 transition">
-                <span class="font-semibold text-gray-800">Assignment 1 - Physics</span>
-                <span class="text-gray-500 text-sm ml-2">(Submitted on: 20 Aug 2025)</span>
-              </li>
-              <li class="bg-gray-100 rounded-lg p-3 flex justify-between shadow-sm hover:bg-gray-200 transition">
-                <span class="font-semibold text-gray-800">Assignment 2 - Math</span>
-                <span class="text-gray-500 text-sm ml-2">(Submitted on: 22 Aug 2025)</span>
-              </li>
-              <li class="bg-gray-100 rounded-lg p-3 flex justify-between shadow-sm hover:bg-gray-200 transition">
-                 <span class="font-semibold text-gray-800">Assignment 3 - Chemistry</span>
-                 <span class="text-gray-500 text-sm ml-2">(Submitted on: 25 Aug 2025)</span>
+       <ul class="list-disc pl-6 py-2 space-y-2">
+             <li *ngFor="let submittedAssignment of submittedAssignments"  class="bg-gray-100 rounded-lg flex justify-between p-3 shadow-sm hover:bg-gray-200 transition">
+                <span class="font-semibold text-gray-800">{{submittedAssignment.title}}</span>
+                <span class="text-gray-500 text-sm ml-2">{{submittedAssignment.dueDate}}</span>
               </li>
           </ul>
         </mat-expansion-panel>
