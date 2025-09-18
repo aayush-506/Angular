@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { Assignment } from '../../Interfaces/assignment';
 import { Observable } from 'rxjs';
+import { Grade } from '../../Interfaces/grade';
 
 @Component({
   selector: 'app-large-card-dashboard',
@@ -18,4 +19,5 @@ export class LargeCardDashboard {
   title : string ;
 };
 @Input() assignments! : Observable<Assignment[]>;
+@Input() grades! : Observable<Grade[]>;
 }

@@ -11,13 +11,10 @@
   </div>
 </ng-container>
 
-   
-    <div *ngIf="largeCard.title=='Recent Grades'" class="Assignments-div">
-        <app-grade-bar-dashboard></app-grade-bar-dashboard>
-        <app-grade-bar-dashboard></app-grade-bar-dashboard>
-        <app-grade-bar-dashboard></app-grade-bar-dashboard>
-        <app-grade-bar-dashboard></app-grade-bar-dashboard>
-    </div>
-   
+<ng-container *ngIf="largeCard.title === 'Recent Grades'">
+  <div *ngFor="let grade of grades | async" class="Assignments-div">
+    <app-grade-bar-dashboard [grade]="grade"></app-grade-bar-dashboard>
+  </div>
+</ng-container>
   
 </div>
