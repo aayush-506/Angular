@@ -34,7 +34,6 @@ export class MainDashboard {
 
   ngOnInit(){
     this.gpa = this.dashboardDataService.getGpa();
-
   }
 
 }
