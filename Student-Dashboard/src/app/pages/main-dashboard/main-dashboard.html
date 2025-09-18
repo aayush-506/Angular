@@ -14,7 +14,7 @@
 </div>
 
 <div class="large-div">
-  <app-large-card-dashboard 
+  <app-large-card-dashboard [assignments]="assignments"
     *ngFor="let largeCard of largeCards" 
     [largeCard]="largeCard">
   </app-large-card-dashboard> 

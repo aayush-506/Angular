@@ -10,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
 import { DashboardData } from '../../service/dashboard-data';
 import { map, Observable } from 'rxjs';
 import { Announcement } from '../../Interfaces/announcement';
+import { Assignment } from '../../Interfaces/assignment';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -36,6 +37,8 @@ export class MainDashboard {
   allAssignment!: Observable<number>;
   latestAnnouncement!: Observable<Announcement | null>;
 
+  assignments! : Observable<Assignment[]>;
+
   constructor(private dashboardDataService : DashboardData){}
 
   ngOnInit(){
@@ -45,6 +48,8 @@ export class MainDashboard {
     map(data => data.filter(a => a.studentId === 1 && a.status === "pending").length));
     this.allAssignment = this.dashboardDataService.getAssignmentsData().pipe(map(data => data.filter(a=>a.studentId == 1).length));
     this.latestAnnouncement = this.dashboardDataService.getLatestAnnouncement();
+
+    this.assignments = this.dashboardDataService.getAssignmentsData().pipe(map(data=>data.filter(a=>a.studentId==1 && a.status === "pending")));
   }
 
 }
