@@ -7,4 +7,5 @@ export interface Student {
     semester : number;
     year : number ;
     rollNo : string ;
+    image : string;
 }
