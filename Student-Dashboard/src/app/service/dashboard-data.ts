@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Announcement } from '../Interfaces/announcement';
 import { Assignment } from '../Interfaces/assignment';
 import { Grade } from '../Interfaces/grade';
+import { Attendance } from '../Interfaces/attendance';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,13 @@ export class DashboardData {
  announcements = new BehaviorSubject<Announcement[]>([]);
  assignments = new BehaviorSubject<Assignment[]>([]);
  grades = new BehaviorSubject<Grade[]>([]);
+ attendance = new BehaviorSubject<Attendance[]>([]);
 
 constructor(private http : HttpClient){}
 announcementUrl = "http://localhost:3000/announcements";
 assignmentUrl = "http://localhost:3000/assignments";
 gradeUrl= "http://localhost:3000/grades";
+attendanceUrl = "http://localhost:3000/attendance";
 
 // for toggling sidenav current status
 sidenavToggle(){
@@ -56,5 +59,16 @@ getAnnouncementsData(): Observable<Announcement[]>{
  // providing the grades data as read-only Observable
  getGradesData(){
   return this.grades.asObservable();
+ }
+
+// fetching attendance from API and updating behaviorSubject
+ loadAttendance(){
+    this.http.get<Attendance[]>(this.attendanceUrl).subscribe(data=>{
+      this.attendance.next(data);
+    })
+ }
+ // providing the attandance data as read-only Observable
+ getAttendanceData(){
+  return this.attendance.asObservable();
  }
 }
