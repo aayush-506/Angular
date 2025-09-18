@@ -1,2 +1,4 @@
-<h1 class="text-2xl">Welcome back, Aayush! 👋</h1>
-<h1 class="text-md text-gray-500">Friday, September 12, 2025</h1>
+<ng-container *ngIf="student | async as student">
+    <h1 class="text-2xl">Welcome back, {{student[0].name.split(' ')[0]}}! 👋</h1>
+    <h1 class="text-md text-gray-500">{{ today | date:'fullDate' }}</h1>
+</ng-container>
