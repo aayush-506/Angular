@@ -1,9 +1,9 @@
         <mat-nav-list class="InnerWrapper">
-            <div class="profile">
-                    <div class="bg-zinc-900 h-[52px] w-[52px] ml-5 rounded-full"></div>
-                    <div class="">
-                        <h1 class="ml-2 text-lg">Aayush Chauhan</h1>
-                        <h1 class="text-sm ml-3 text-zinc-500">Computer Science</h1>
+            <div *ngIf="student | async as student" class="profile">
+                    <div class="bg-zinc-900 h-[52px] w-[52px] ml-5 rounded-full"><img class="rounded-full h-full w-full object-cover" [src]='student[0].image' alt="profilePic"></div>
+                    <div>
+                        <h1 class="ml-2 text-lg">{{student[0].name}}</h1>
+                        <h1 class="text-sm ml-3 text-zinc-500">{{student[0].branch}}</h1>
                     </div>
             </div>
             <hr class="border-zinc-300">
