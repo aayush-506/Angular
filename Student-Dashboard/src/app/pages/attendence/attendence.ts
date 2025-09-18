@@ -26,11 +26,7 @@ attendancePercentage! : Observable<number>
     map(data => data.filter(a => a.studentId == 1))
   );
 
-  this.attendancePercentage = this.attendance.pipe(map(data=>{
-    const totalAttended = data.reduce((sum,a)=>sum+a.attended,0);
-    const totalClasses = data.reduce((sum,a)=>sum+a.total,0);
-    return parseFloat(((totalAttended/totalClasses)*100).toFixed(2));
-  }))
+  this.attendancePercentage = this.dashboardDataService.getCurrentAttendance();
   
 }
 }
