@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatModule } from '../../appModules/mat-module';
+import { Grade } from '../../Interfaces/grade';
 
 @Component({
   selector: 'app-grade-bar-dashboard',
@@ -9,5 +10,5 @@ import { MatModule } from '../../appModules/mat-module';
   styleUrl: './grade-bar-dashboard.scss'
 })
 export class GradeBarDashboard {
-
+@Input() grade! : Grade;
 }
