@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { DashboardData } from '../../service/dashboard-data';
 import { map, Observable } from 'rxjs';
+import { Announcement } from '../../Interfaces/announcement';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -21,9 +22,9 @@ export class MainDashboard {
 
   smallCards = [
     {title:"Current GPA",icon:"school",iconColor:"#00A63E",iconBg:"#F0FDF4"},
-    {title:"Credits Completed",icon:"menu_book",iconColor:"#155DFC",iconBg:"#EFF6FF"},
     {title:"Pending Assignments",icon:"assignment_turned_in",iconColor:"#F54A00",iconBg:"#FFF7ED"},
-    {title:"Current Attendance",icon:"calendar_month",iconColor:"#9810FA",iconBg:"#FAF5FF"}
+    {title:"Current Attendance",icon:"calendar_month",iconColor:"#9810FA",iconBg:"#FAF5FF"},
+    {title:"Latest Announcement",icon:"notifications",iconColor:"#155DFC",iconBg:"#EFF6FF"},
   ];
   largeCards = [
     {title : "Upcoming Assignments"},
@@ -33,6 +34,7 @@ export class MainDashboard {
   percentage! : Observable<number>;
   pendingCount!: Observable<number>;
   allAssignment!: Observable<number>;
+  latestAnnouncement!: Observable<Announcement | null>;
 
   constructor(private dashboardDataService : DashboardData){}
 
@@ -42,6 +44,7 @@ export class MainDashboard {
     this.pendingCount = this.dashboardDataService.getAssignmentsData().pipe(
     map(data => data.filter(a => a.studentId === 1 && a.status === "pending").length));
     this.allAssignment = this.dashboardDataService.getAssignmentsData().pipe(map(data => data.filter(a=>a.studentId == 1).length));
+    this.latestAnnouncement = this.dashboardDataService.getLatestAnnouncement();
   }
 
 }
