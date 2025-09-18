@@ -16,11 +16,11 @@
 
     <div class="space-y-2 font-semibold ">
       <p>B.Tech</p>
-      <p>Computer Science and Engineering</p>
-      <p>6</p>
-      <p>3rd Year</p>
-      <p>22CSE1234</p>
-      <p>2025-26</p>
+      <p *ngFor="let s of student | async">{{s.branch}}</p>
+      <p *ngFor="let s of student | async">{{s.semester}}</p>
+      <p *ngFor="let s of student | async">{{s.year}}</p>
+      <p *ngFor="let s of student | async">{{s.rollNo}}</p>
+      <p *ngFor="let s of student | async">2025-26</p>
     </div>
 
   </div>
