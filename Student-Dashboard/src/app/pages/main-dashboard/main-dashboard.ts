@@ -8,7 +8,7 @@ import { LargeCardDashboard } from '../../components/large-card-dashboard/large-
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { DashboardData } from '../../service/dashboard-data';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -31,12 +31,17 @@ export class MainDashboard {
   ]
   gpa! : Observable<number>;
   percentage! : Observable<number>;
+  pendingCount!: Observable<number>;
+  allAssignment!: Observable<number>;
+
   constructor(private dashboardDataService : DashboardData){}
 
   ngOnInit(){
     this.gpa = this.dashboardDataService.getGpa();
     this.percentage = this.dashboardDataService.getCurrentAttendance();
-    
+    this.pendingCount = this.dashboardDataService.getAssignmentsData().pipe(
+    map(data => data.filter(a => a.studentId === 1 && a.status === "pending").length));
+    this.allAssignment = this.dashboardDataService.getAssignmentsData().pipe(map(data => data.filter(a=>a.studentId == 1).length));
   }
 
 }

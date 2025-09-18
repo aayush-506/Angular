@@ -5,7 +5,10 @@
     *ngFor="let smallCard of smallCards"
     [smallCard]="smallCard"
     [gpa]="smallCard.title === 'Current GPA' ? gpa : undefined"
-    [percentage]="smallCard.title === 'Current Attendance' ? percentage : undefined">
+    [percentage]="smallCard.title === 'Current Attendance' ? percentage : undefined"
+    [pendingCount]="smallCard.title === 'Pending Assignments' ? pendingCount : undefined"
+    [allAssignment]="smallCard.title === 'Pending Assignments' ? allAssignment : undefined"
+    >
   </app-small-card-dashboard>
 </div>
 
