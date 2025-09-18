@@ -4,7 +4,7 @@
   
   <div class="mb-10">
     <h2 class="text-2xl font-semibold text-slate-700">Overview </h2>
-    <app-small-card-dashboard [smallCard]="smallCard"></app-small-card-dashboard>
+    <app-small-card-dashboard [percentage]="attendancePercentage" [smallCard]="smallCard"></app-small-card-dashboard>
   </div>
 
 
@@ -22,29 +22,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="border-t hover:bg-gray-50">
-            <td class="py-3 px-6">Math</td>
-            <td class="py-3 px-6">25</td>
-            <td class="py-3 px-6">30</td>
-            <td class="py-3 px-6">83%</td>
-            <td class="py-3 px-6 text-green-600 font-semibold">✅ Good</td>
-          </tr>
-          <tr class="border-t hover:bg-gray-50">
-            <td class="py-3 px-6">Physics</td>
-            <td class="py-3 px-6">20</td>
-            <td class="py-3 px-6">28</td>
-            <td class="py-3 px-6">71%</td>
-            <td class="py-3 px-6 text-yellow-600 font-semibold">⚠️ Low</td>
-          </tr>
-          <tr class="border-t hover:bg-gray-50">
-            <td class="py-3 px-6">English</td>
-            <td class="py-3 px-6">27</td>
-            <td class="py-3 px-6">27</td>
-            <td class="py-3 px-6">100%</td>
-            <td class="py-3 px-6 text-blue-600 font-semibold">⭐ Excellent</td>
+          <tr *ngFor="let attendance of attendance | async" class="border-t hover:bg-gray-50">
+            <td class="py-3 px-6">{{attendance.courseName}}</td>
+            <td class="py-3 px-6">{{attendance.attended}}</td>
+            <td class="py-3 px-6">{{attendance.total}}</td>
+            <td class="py-3 px-6">{{((attendance.attended / attendance.total)*100).toFixed(2)}}%</td>
+            <td *ngIf="(attendance.attended / attendance.total) * 100 >= 75" [class.text-green-600]="(attendance.attended / attendance.total) * 100 >= 75" class="py-3 px-6 text-green-600 font-semibold">✅ Good</td>
+            <td *ngIf="(attendance.attended / attendance.total) * 100 < 75"  [class.text-yellow-600]="(attendance.attended / attendance.total) * 100 < 75" class="py-3 px-6 text-green-600 font-semibold">⚠️ Low</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-
