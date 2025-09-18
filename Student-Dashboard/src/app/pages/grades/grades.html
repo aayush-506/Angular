@@ -4,7 +4,7 @@
 
   <div class="mb-10">
     <h2 class="text-2xl font-semibold text-slate-700">Overview</h2>
-    <app-small-card-dashboard [smallCard]="smallCard"></app-small-card-dashboard>
+    <app-small-card-dashboard [gpa]="currentGPA" [smallCard]="smallCard"></app-small-card-dashboard>
   </div>
 
 
@@ -23,29 +23,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="border-t hover:bg-gray-50">
-            <td class="py-3 px-6">Math</td>
-            <td class="py-3 px-6">85</td>
-            <td class="py-3 px-6">90</td>
-            <td class="py-3 px-6">88</td>
-            <td class="py-3 px-6 font-semibold">A</td>
-            <td class="py-3 px-6 text-green-600 font-semibold">✅ Excellent</td>
-          </tr>
-          <tr class="border-t hover:bg-gray-50">
-            <td class="py-3 px-6">Physics</td>
-            <td class="py-3 px-6">70</td>
-            <td class="py-3 px-6">65</td>
-            <td class="py-3 px-6">72</td>
-            <td class="py-3 px-6 font-semibold">B</td>
-            <td class="py-3 px-6 text-yellow-600 font-semibold">⚠️ Average</td>
-          </tr>
-          <tr class="border-t hover:bg-gray-50">
-            <td class="py-3 px-6">English</td>
-            <td class="py-3 px-6">92</td>
-            <td class="py-3 px-6">95</td>
-            <td class="py-3 px-6">94</td>
-            <td class="py-3 px-6 font-semibold">A+</td>
-            <td class="py-3 px-6 text-blue-600 font-semibold">⭐ Outstanding</td>
+          <tr *ngFor="let grade of grades | async" class="border-t hover:bg-gray-50">
+            <td class="py-3 px-6">{{grade.courseName}}</td>
+            <td class="py-3 px-6">{{grade.midterm}}</td>
+            <td class="py-3 px-6">{{grade.final}}</td>
+            <td class="py-3 px-6">{{grade.assignments}}</td>
+            <td class="py-3 px-6 font-semibold">{{grade.grade}}</td>
+            <td *ngIf="grade.grade == 'A'" [class.text-green-600]="grade.grade == 'A'" class="py-3 px-6 font-semibold">✅ Excellent</td>
+            <td *ngIf="grade.grade == 'B'" [class.text-yellow-600]="grade.grade == 'B'" class="py-3 px-6  font-semibold"> ⚠️ Average</td>
+            <td *ngIf="grade.grade == 'A+'" [class.text-blue-600]="grade.grade == 'A+'" class="py-3 px-6  font-semibold">⭐ Outstanding</td>
           </tr>
         </tbody>
       </table>
