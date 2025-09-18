@@ -7,9 +7,12 @@ import { GreetingHeading } from '../../components/greeting-heading/greeting-head
 import { LargeCardDashboard } from '../../components/large-card-dashboard/large-card-dashboard';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { DashboardData } from '../../service/dashboard-data';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-dashboard',
+  standalone:true,
   imports: [RouterOutlet,CommonModule,MatModule,Sidenav,Navbar,SmallCardDashboard,GreetingHeading,LargeCardDashboard],
   templateUrl: './main-dashboard.html',
   styleUrl: './main-dashboard.scss'
@@ -26,6 +29,12 @@ export class MainDashboard {
     {title : "Upcoming Assignments"},
     {title : "Recent Grades"}
   ]
+  gpa! : Observable<number>;
+  constructor(private dashboardDataService : DashboardData){}
 
+  ngOnInit(){
+    this.gpa = this.dashboardDataService.getGpa();
+
+  }
 
 }

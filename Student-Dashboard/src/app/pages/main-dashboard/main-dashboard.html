@@ -1,7 +1,7 @@
 <app-greeting-heading></app-greeting-heading>
 
 <div class="small-card">
-  <app-small-card-dashboard 
+  <app-small-card-dashboard [gpa]="gpa"
     *ngFor="let smallCard of smallCards" 
     [smallCard]="smallCard">
   </app-small-card-dashboard>
