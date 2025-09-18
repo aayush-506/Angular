@@ -18,7 +18,7 @@ export class SmallCardDashboard {
     iconColor: string;
     iconBg: string;
   };
-@Input() gpa!: Observable<number>;
-@Input() percentage!: Observable<number>;
+@Input() gpa: Observable<number> | undefined;
+@Input() percentage: Observable<number> | undefined;
 
 }
