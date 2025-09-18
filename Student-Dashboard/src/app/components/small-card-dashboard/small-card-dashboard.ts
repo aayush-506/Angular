@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import { MatModule } from '../../appModules/mat-module';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { Announcement } from '../../Interfaces/announcement';
 
 @Component({
   selector: 'app-small-card-dashboard',
@@ -22,5 +23,6 @@ export class SmallCardDashboard {
 @Input() percentage: Observable<number> | undefined;
 @Input() pendingCount: Observable<number> | undefined;
 @Input() allAssignment: Observable<number> | undefined;
+@Input() latestAnnouncement?: Observable<Announcement | null>;
 
 }
