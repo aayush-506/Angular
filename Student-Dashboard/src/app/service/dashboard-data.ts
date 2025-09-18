@@ -1,16 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Announcement } from '../Interfaces/announcement';
 import { Assignment } from '../Interfaces/assignment';
 import { Grade } from '../Interfaces/grade';
 import { Attendance } from '../Interfaces/attendance';
 import { Course } from '../Interfaces/course';
+import { Student } from '../Interfaces/student';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardData {
+
+  gradePoints: Record<string, number> = {
+  "A+": 4.0,
+  "A": 4.0,
+  "A-": 3.7,
+  "B+": 3.3,
+  "B": 3.0,
+  "B-": 2.7,
+  "C+": 2.3,
+  "C": 2.0,
+  "D": 1.0,
+  "F": 0.0
+};
   
  sidenavState = new BehaviorSubject<boolean>(false);
  announcements = new BehaviorSubject<Announcement[]>([]);
@@ -18,14 +32,25 @@ export class DashboardData {
  grades = new BehaviorSubject<Grade[]>([]);
  attendance = new BehaviorSubject<Attendance[]>([]);
  course = new BehaviorSubject<Course[]>([]);
+ student = new BehaviorSubject<Student[]>([]);
 
-constructor(private http : HttpClient){}
+ // required for main-daashboard cards
+ gpaSubject = new BehaviorSubject<number>(0);
+
+constructor(private http : HttpClient){
+  this.loadAnnouncements();
+  this.loadAssignments();
+  this.loadGrades();
+  this.loadAttendance();
+  this.loadCourse();
+  this.loadStudent();
+}
 announcementUrl = "http://localhost:3000/announcements";
 assignmentUrl = "http://localhost:3000/assignments";
 gradeUrl= "http://localhost:3000/grades";
 attendanceUrl = "http://localhost:3000/attendance";
 courseUrl = "http://localhost:3000/courses";
-
+studentUrl = "http://localhost:3000/students";
 
 // for toggling sidenav current status
 sidenavToggle(){
@@ -58,6 +83,8 @@ getAnnouncementsData(): Observable<Announcement[]>{
  loadGrades(){
     this.http.get<Grade[]>(this.gradeUrl).subscribe(data=>{
       this.grades.next(data);
+      // calculating the grades
+      this.calculateGpaForStudent(1,this.gradePoints);
     })
  }
  // providing the grades data as read-only Observable
@@ -86,4 +113,37 @@ getAnnouncementsData(): Observable<Announcement[]>{
  getCourseData(){
   return this.course.asObservable();
  }
+
+// fetching student from API and updating behaviorSubject
+ loadStudent(){
+    this.http.get<Student[]>(this.studentUrl).subscribe(data=>{
+      this.student.next(data);
+    })
+ }
+ // providing the student data as read-only Observable
+ getStudentData(){
+  return this.student.asObservable();
+ }
+
+
+// calculating the grades   
+  calculateGpaForStudent(studentId: number, gradePoints: Record<string, number>): void {
+    this.getGradesData().pipe(
+      map(grades => {
+        const studentGrades = grades.filter(g => g.studentId === studentId);
+        if (studentGrades.length === 0) return 0;
+
+        const totalPoints = studentGrades.reduce((sum, g) => {
+          return sum + (gradePoints[g.grade] || 0);
+        }, 0);
+
+        const gpa = parseFloat((totalPoints / studentGrades.length).toFixed(2));
+        return gpa;
+      })
+    ).subscribe(gpa => this.gpaSubject.next(gpa));
+  }
+ // accessing the calculated grade
+  getGpa(): Observable<number> {
+    return this.gpaSubject.asObservable();
+  }
 }
