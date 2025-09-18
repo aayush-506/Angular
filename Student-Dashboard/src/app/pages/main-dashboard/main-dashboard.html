@@ -1,9 +1,11 @@
 <app-greeting-heading></app-greeting-heading>
 
 <div class="small-card">
-  <app-small-card-dashboard [gpa]="gpa"
-    *ngFor="let smallCard of smallCards" 
-    [smallCard]="smallCard">
+  <app-small-card-dashboard 
+    *ngFor="let smallCard of smallCards"
+    [smallCard]="smallCard"
+    [gpa]="smallCard.title === 'Current GPA' ? gpa : undefined"
+    [percentage]="smallCard.title === 'Current Attendance' ? percentage : undefined">
   </app-small-card-dashboard>
 </div>
 

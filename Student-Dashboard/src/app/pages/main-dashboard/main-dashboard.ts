@@ -30,10 +30,13 @@ export class MainDashboard {
     {title : "Recent Grades"}
   ]
   gpa! : Observable<number>;
+  percentage! : Observable<number>;
   constructor(private dashboardDataService : DashboardData){}
 
   ngOnInit(){
     this.gpa = this.dashboardDataService.getGpa();
+    this.percentage = this.dashboardDataService.getCurrentAttendance();
+    
   }
 
 }
