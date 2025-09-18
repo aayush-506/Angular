@@ -1,9 +1,11 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import { MatModule } from '../../appModules/mat-module';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-small-card-dashboard',
+  standalone: true,
   imports: [MatModule,CommonModule],
   templateUrl: './small-card-dashboard.html',
   styleUrl: './small-card-dashboard.scss',
@@ -16,4 +18,6 @@ export class SmallCardDashboard {
     iconColor: string;
     iconBg: string;
   };
+@Input() gpa!: Observable<number>;
+
 }
