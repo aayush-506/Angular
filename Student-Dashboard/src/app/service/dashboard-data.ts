@@ -68,6 +68,16 @@ loadAnnouncements(){
 getAnnouncementsData(): Observable<Announcement[]>{
   return this.announcements.asObservable();
 }
+// finding the latest Announcement
+  getLatestAnnouncement(): Observable<Announcement | null> {
+    return this.getAnnouncementsData().pipe(
+      map(data => {
+        if (!data.length) return null;
+        // Sort by date descending (newest first)
+        return data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
+      })
+    );
+  }
 
 // fetching assignments from API and updating behaviorSubject
  loadAssignments(){
