@@ -11,6 +11,7 @@ import { DashboardData } from '../../service/dashboard-data';
 import { map, Observable } from 'rxjs';
 import { Announcement } from '../../Interfaces/announcement';
 import { Assignment } from '../../Interfaces/assignment';
+import { Grade } from '../../Interfaces/grade';
 
 @Component({
   selector: 'app-main-dashboard',
@@ -38,6 +39,7 @@ export class MainDashboard {
   latestAnnouncement!: Observable<Announcement | null>;
 
   assignments! : Observable<Assignment[]>;
+  grades! : Observable<Grade[]>;
 
   constructor(private dashboardDataService : DashboardData){}
 
@@ -50,6 +52,7 @@ export class MainDashboard {
     this.latestAnnouncement = this.dashboardDataService.getLatestAnnouncement();
 
     this.assignments = this.dashboardDataService.getAssignmentsData().pipe(map(data=>data.filter(a=>a.studentId==1 && a.status === "pending")));
+    this.grades = this.dashboardDataService.getGradesData().pipe(map(data=>data.filter(a=>a.studentId == 1)));
   }
 
 }
