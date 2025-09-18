@@ -5,13 +5,12 @@
          <a routerLink="/grades" *ngIf="largeCard.title=='Recent Grades'" class="mt-7 text-blue-700 cursor-pointer hover:underline">View All →</a>
     </div>
    
-    <div *ngIf="largeCard.title=='Upcoming Assignments'" class="Assignments-div">
-        <app-assignment-bar-dashboard></app-assignment-bar-dashboard>
-        <app-assignment-bar-dashboard></app-assignment-bar-dashboard>
-        <app-assignment-bar-dashboard></app-assignment-bar-dashboard>
-        <app-assignment-bar-dashboard></app-assignment-bar-dashboard>
-        <app-assignment-bar-dashboard></app-assignment-bar-dashboard>
-    </div>
+<ng-container *ngIf="largeCard.title === 'Upcoming Assignments'">
+  <div *ngFor="let assignment of assignments | async" class="Assignments-div">
+    <app-assignment-bar-dashboard [assignment]="assignment"></app-assignment-bar-dashboard>
+  </div>
+</ng-container>
+
    
     <div *ngIf="largeCard.title=='Recent Grades'" class="Assignments-div">
         <app-grade-bar-dashboard></app-grade-bar-dashboard>

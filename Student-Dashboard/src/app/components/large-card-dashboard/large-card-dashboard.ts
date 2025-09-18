@@ -4,6 +4,8 @@ import { AssignmentBarDashboard } from '../assignment-bar-dashboard/assignment-b
 import { GradeBarDashboard } from '../grade-bar-dashboard/grade-bar-dashboard';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Assignment } from '../../Interfaces/assignment';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-large-card-dashboard',
@@ -15,4 +17,5 @@ export class LargeCardDashboard {
 @Input() largeCard! : {
   title : string ;
 };
+@Input() assignments! : Observable<Assignment[]>;
 }
