@@ -16,3 +16,12 @@
         <mat-icon [ngStyle]="{'color':smallCard.iconColor}">{{smallCard.icon}}</mat-icon>
     </div>
 </div>
+<div *ngIf="pendingCount && allAssignment | async" class="h-[130px] w-[280px] border border-zinc-300 rounded-2xl flex px-9 justify-between shadow-lg hover:shadow-xl mt-7">
+    <div>
+        <h1 class="pt-7 text-md">{{smallCard.title}}</h1>
+        <h1 class="text-xl">{{pendingCount | async}} / {{allAssignment | async}}</h1>
+    </div>
+    <div [ngStyle]="{'background-color':smallCard.iconBg}" class="mt-8 h-10 w-11 rounded-lg flex justify-center items-center">
+        <mat-icon [ngStyle]="{'color':smallCard.iconColor}">{{smallCard.icon}}</mat-icon>
+    </div>
+</div>

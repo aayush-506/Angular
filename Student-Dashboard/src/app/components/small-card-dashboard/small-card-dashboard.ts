@@ -20,5 +20,7 @@ export class SmallCardDashboard {
   };
 @Input() gpa: Observable<number> | undefined;
 @Input() percentage: Observable<number> | undefined;
+@Input() pendingCount: Observable<number> | undefined;
+@Input() allAssignment: Observable<number> | undefined;
 
 }
