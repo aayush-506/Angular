@@ -36,6 +36,7 @@ export class DashboardData {
 
  // required for main-daashboard cards
  gpaSubject = new BehaviorSubject<number>(0);
+ attendanceSubject = new BehaviorSubject<number>(0);
 
 constructor(private http : HttpClient){
   this.loadAnnouncements();
@@ -96,6 +97,7 @@ getAnnouncementsData(): Observable<Announcement[]>{
  loadAttendance(){
     this.http.get<Attendance[]>(this.attendanceUrl).subscribe(data=>{
       this.attendance.next(data);
+      this.calculateCurrentAttendance(1);
     })
  }
  // providing the attandance data as read-only Observable
@@ -145,5 +147,21 @@ getAnnouncementsData(): Observable<Announcement[]>{
  // accessing the calculated grade
   getGpa(): Observable<number> {
     return this.gpaSubject.asObservable();
+  }
+
+  // calculating the currentAttendance
+  calculateCurrentAttendance(studentId: number): void {
+    this.attendance.pipe(
+      map(records => records.filter(r => r.studentId === studentId)),
+      map(records => {
+        const totalAttended = records.reduce((sum, r) => sum + r.attended, 0);
+        const totalClasses = records.reduce((sum, r) => sum + r.total, 0);
+        return parseFloat(((totalAttended / totalClasses) * 100).toFixed(2));
+      })
+    ).subscribe(percentage => this.attendanceSubject.next(percentage));
+  }
+  // accessing the calculated attendance
+  getCurrentAttendance(): Observable<number> {
+    return this.attendanceSubject.asObservable();
   }
 }
