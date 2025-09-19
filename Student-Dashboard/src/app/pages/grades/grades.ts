@@ -22,11 +22,12 @@ currentGPA!: Observable<number>;
 constructor(private dashboardDataService : DashboardData){}
 
 ngOnInit(){
+  const studentID = this.dashboardDataService.getCurrentStudentId();
   this.dashboardDataService.loadGrades();
   this.grades = this.dashboardDataService.getGradesData();
   const allGrades = this.dashboardDataService.getGradesData();
     this.grades = allGrades.pipe(
-          map(data => data.filter(a => a.studentId === 1))
+          map(data => data.filter(a => a.studentId === studentID))
         );        
 
 this.currentGPA = this.dashboardDataService.getGpa();
