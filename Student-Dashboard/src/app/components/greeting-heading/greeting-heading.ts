@@ -18,6 +18,7 @@ export class GreetingHeading {
   student! : Observable<Student[]>
 
   ngOnInit(){
-   this.student = this.dashboardDataService.getStudentData().pipe(map(data=>data.filter(a=>a.id == 1)));
+    const studentID = this.dashboardDataService.getCurrentStudentId();
+   this.student = this.dashboardDataService.getStudentData().pipe(map(data=>data.filter(a=>a.id == studentID)));
   }
 }
