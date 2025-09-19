@@ -43,12 +43,12 @@ export class DashboardData {
     this.loadStudent();
   }
 
-  announcementUrl = "http://localhost:3000/announcements";
-  assignmentUrl = "http://localhost:3000/assignments";
-  gradeUrl= "http://localhost:3000/grades";
-  attendanceUrl = "http://localhost:3000/attendance";
-  courseUrl = "http://localhost:3000/courses";
-  studentUrl = "http://localhost:3000/students";
+  announcementUrl = "https://json-server-students.onrender.com/announcements";
+  assignmentUrl = "https://json-server-students.onrender.com/assignments";
+  gradeUrl= "https://json-server-students.onrender.com/grades";
+  attendanceUrl = "https://json-server-students.onrender.com/attendance";
+  courseUrl = "https://json-server-students.onrender.com/courses";
+  studentUrl = "https://json-server-students.onrender.com/students";
 
   // getting and setting studentID
   setCurrentStudentId(id: number) {
