@@ -1,59 +1,60 @@
-# RoutingMiniWebsite
+Routing Mini Website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+This project is a mini Angular application demonstrating routing and navigation between multiple pages/components.
 
-## Development server
+🌐 Live Demo
 
-To start a local development server, run:
+Check out the live app here:
+👉 https://routing-mini-website.vercel.app/home
 
-```bash
+🚀 Features
+
+Multi-page navigation using Angular Router
+
+Component-based architecture for clean and maintainable code
+
+Demonstrates lazy loading and route guards (if applicable)
+
+Simple UI to focus on routing concepts
+
+🛠️ Tech Stack
+
+Frontend: Angular 20
+
+Styling: CSS / SCSS
+
+Deployment: Vercel
+
+⚙️ Setup & Development
+
+Clone the repository:
+
+git clone https://github.com/yourusername/routing-mini-website.git
+cd routing-mini-website
+
+
+Install dependencies:
+
+npm install
+
+
+Start the development server:
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+Open your browser and navigate to:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+http://localhost:4200
 
-```bash
-ng generate component component-name
-```
+📁 Project Structure
+src/
+ ├─ app/
+ │   ├─ components/   # Individual components for pages
+ │   ├─ app-routing.module.ts  # Application routes
+ │   └─ app.module.ts
+ └─ assets/           # Images, icons, and other static files
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+📄 License
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is licensed under the MIT License.
