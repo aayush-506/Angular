@@ -25,10 +25,11 @@ export class Navbar {
     this.dashboardDataService.sidenavToggle();
   }
   ngOnInit(){
+    const studentID = this.dashboardDataService.getCurrentStudentId();
     this.dashboardDataService.sidenavState.subscribe({
       next : result => this.showProfile = result 
     })
-     this.student = this.dashboardDataService.getStudentData().pipe(map(data=>data.filter(a=>a.id == 1)));
+     this.student = this.dashboardDataService.getStudentData().pipe(map(data=>data.filter(a=>a.id == studentID)));
   }
 
 }
