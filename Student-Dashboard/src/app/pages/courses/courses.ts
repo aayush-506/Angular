@@ -1,27 +1,36 @@
 import { Component } from '@angular/core';
-import { RouterLink} from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { DashboardData } from '../../service/dashboard-data';
-import { map, Observable } from 'rxjs';
 import { Student } from '../../Interfaces/student';
 import { CommonModule } from '@angular/common';
+import { filter, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-courses',
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './courses.html',
   styleUrl: './courses.scss'
 })
 export class Courses {
 
-  student! : Observable<Student[]>
+  student$!: Observable<Student | undefined>;
 
-  constructor(private dashboardDataService : DashboardData){}
+  constructor(private dashboardDataService: DashboardData) {}
 
- ngOnInit(){ 
- 
-  this.dashboardDataService.loadStudent();
-  this.student = this.dashboardDataService.getStudentData().pipe(map(data=>data.filter(a=>a.id == 1)));
+ngOnInit() { 
+  const studentID = this.dashboardDataService.getCurrentStudentId();
 
- }
+  if (studentID !== null) {
+    this.student$ = this.dashboardDataService.getStudentData().pipe(
+      filter(data => data.length > 0),
+      map(data => data.find(s => s.id == studentID))
+    );
+
+    // Subscribe to check the value
+    this.student$.subscribe(student => {
+      console.log('Fetched student:', student);
+    });
+  }
+}
 
 }

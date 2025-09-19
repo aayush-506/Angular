@@ -1,44 +1,43 @@
- <h1 class="text-3xl font-bold mb-9 text-blue-900">Courses & Subjects :</h1>
+<h1 class="text-3xl font-bold mb-9 text-blue-900">Courses & Subjects :</h1>
 <div class="mr-[100px]">
-    
-    <div class="border border-zinc-300 shadow-lg rounded-xl p-6 mb-8">
-    
-  <div class="grid grid-cols-3 text-left">
-    
-    <div class="space-y-2 w-[290px]">
-      <p class="flex">Course Name <span class="pl-[140px] font-bold">:</span></p>
-      <p>Branch Name <span class="pl-[136px] font-bold">:</span></p>
-      <p>Semester <span class="pl-[165px] font-bold">:</span></p>
-      <p>Year <span class="pl-[200px] font-bold">:</span></p>
-      <p>Roll No <span class="pl-[180px] font-bold">:</span></p>
-      <p>Session <span class="pl-[176px] font-bold">:</span></p>
-    </div>
 
-    <div class="space-y-2 font-semibold ">
-      <p>B.Tech</p>
-      <p *ngFor="let s of student | async">{{s.branch}}</p>
-      <p *ngFor="let s of student | async">{{s.semester}}</p>
-      <p *ngFor="let s of student | async">{{s.year}}</p>
-      <p *ngFor="let s of student | async">{{s.rollNo}}</p>
-      <p *ngFor="let s of student | async">2025-26</p>
-    </div>
+  <div class="border border-zinc-300 shadow-lg rounded-xl p-6 mb-8">
+    <div class="grid grid-cols-3 text-left">
+      
+      <div class="space-y-2 w-[290px]">
+        <p class="flex">Course Name <span class="pl-[140px] font-bold">:</span></p>
+        <p>Branch Name <span class="pl-[136px] font-bold">:</span></p>
+        <p>Semester <span class="pl-[165px] font-bold">:</span></p>
+        <p>Year <span class="pl-[200px] font-bold">:</span></p>
+        <p>Roll No <span class="pl-[180px] font-bold">:</span></p>
+        <p>Session <span class="pl-[176px] font-bold">:</span></p>
+      </div>
 
+      <div class="space-y-2 font-semibold" *ngIf="student$ | async as student">
+        <p>B.Tech</p>
+        <p>{{ student.branch }}</p>
+        <p>{{ student.semester }}</p>
+        <p>{{ student.year }}</p>
+        <p>{{ student.rollNo }}</p>
+        <p>2025-26</p>
+      </div>
+
+    </div>
   </div>
- </div>
 
-    <div class="grid grid-cols-2 gap-6">
-      <a [routerLink]="['/courses', 'core']" class="border border-zinc-300 shadow-lg rounded-xl p-6 text-center text-lg font-medium hover:bg-zinc-300/40 cursor-pointer">
-        Core Subjects
-      </a>
-      <a [routerLink]="['/courses', 'practical']" class="border border-zinc-300 shadow-lg rounded-xl p-6 text-center text-lg font-medium hover:bg-zinc-300/40 cursor-pointer">
-        Lab/Practical Subjects
-      </a>
-      <a [routerLink]="['/courses', 'projects']" class="border border-zinc-300 shadow-lg rounded-xl p-6 text-center text-lg font-medium hover:bg-zinc-300/40 cursor-pointer">
-        Projects
-      </a>
-      <a [routerLink]="['/courses', 'Certification']" class="border border-zinc-300 shadow-lg rounded-xl p-6 text-center text-lg font-medium hover:bg-zinc-300/40 cursor-pointer">
-        Skill-based / Certification Courses
-      </a>
-    </div>
+  <div class="grid grid-cols-2 gap-6">
+    <a [routerLink]="['/dashboard/courses', 'core']" class="border border-zinc-300 shadow-lg rounded-xl p-6 text-center text-lg font-medium hover:bg-zinc-300/40 cursor-pointer">
+      Core Subjects
+    </a>
+    <a [routerLink]="['/dashboard/courses', 'practical']" class="border border-zinc-300 shadow-lg rounded-xl p-6 text-center text-lg font-medium hover:bg-zinc-300/40 cursor-pointer">
+      Lab/Practical Subjects
+    </a>
+    <a [routerLink]="['/dashboard/courses', 'projects']" class="border border-zinc-300 shadow-lg rounded-xl p-6 text-center text-lg font-medium hover:bg-zinc-300/40 cursor-pointer">
+      Projects
+    </a>
+    <a [routerLink]="['/dashboard/courses', 'Certification']" class="border border-zinc-300 shadow-lg rounded-xl p-6 text-center text-lg font-medium hover:bg-zinc-300/40 cursor-pointer">
+      Skill-based / Certification Courses
+    </a>
+  </div>
 
 </div>
