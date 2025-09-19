@@ -25,18 +25,19 @@ export class Assignments {
  constructor(private dashboardDataService : DashboardData){}
 
  ngOnInit(){
+  const studentID = this.dashboardDataService.getCurrentStudentId();
   this.dashboardDataService.loadAssignments();
 
   const allAssignments = this.dashboardDataService.getAssignmentsData();
   
     this.pendingAssignments = allAssignments.pipe(
-      map(data => data.filter(a => a.studentId === 1 && a.status === 'pending'))
+      map(data => data.filter(a => a.studentId == studentID && a.status === 'pending'))
     );
     this.overdueAssignments = allAssignments.pipe(
-      map(data => data.filter(a => a.studentId === 1 && a.status === 'overdue'))
+      map(data => data.filter(a => a.studentId == studentID && a.status === 'overdue'))
     );
     this.submittedAssignments = allAssignments.pipe(
-      map(data => data.filter(a => a.studentId === 1 && a.status === 'submitted'))
+      map(data => data.filter(a => a.studentId == studentID && a.status === 'submitted'))
     );
 
 
