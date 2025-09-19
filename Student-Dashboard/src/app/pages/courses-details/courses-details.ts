@@ -22,6 +22,7 @@ category! : string ;
 constructor(private dashboardDataService : DashboardData , private route : ActivatedRoute){}
 
 ngOnInit(){
+  const studentID = this.dashboardDataService.getCurrentStudentId();
   // for finding the category
   this.route.paramMap.subscribe(params=>{
     this.category = params.get('category') || '';
@@ -31,9 +32,9 @@ ngOnInit(){
   // for fetching the data from API
    this.dashboardDataService.loadCourse();
     const allSubjects = this.dashboardDataService.getCourseData();
-    this.coreSubjects = allSubjects.pipe(map(data=>data.filter(a=>a.type == "core" && a.studentId == 1)));
-    this.practicalSubjects = allSubjects.pipe(map(data=>data.filter(a=>a.type == "practical" && a.studentId == 1)));
-    this.projects = allSubjects.pipe(map(data=>data.filter(a=>a.type == "project" && a.studentId == 1)));
-    this.certifications = allSubjects.pipe(map(data=>data.filter(a=>a.type == "certification" && a.studentId == 1)));
+    this.coreSubjects = allSubjects.pipe(map(data=>data.filter(a=>a.type == "core" && a.studentId == studentID)));
+    this.practicalSubjects = allSubjects.pipe(map(data=>data.filter(a=>a.type == "practical" && a.studentId == studentID)));
+    this.projects = allSubjects.pipe(map(data=>data.filter(a=>a.type == "project" && a.studentId == studentID)));
+    this.certifications = allSubjects.pipe(map(data=>data.filter(a=>a.type == "certification" && a.studentId == studentID)));
 }
 }
