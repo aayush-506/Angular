@@ -4,6 +4,7 @@ import { MatModule } from '../../appModules/mat-module';
 import { DashboardData } from '../../service/dashboard-data';
 import { Router } from '@angular/router';
 import { Student } from '../../Interfaces/student';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login-student',
@@ -16,7 +17,7 @@ export class LoginStudent {
   password: string = '';
   hide: boolean = true;
 
-  constructor(private dashboardDataService: DashboardData, private router: Router) {}
+  constructor(private dashboardDataService: DashboardData, private router: Router , private snackBar: MatSnackBar) {}
 
   onLogin() {
     this.dashboardDataService.getStudentData().subscribe({
@@ -31,10 +32,23 @@ export class LoginStudent {
 
           localStorage.setItem('studentID', matchedStudent.id.toString());
 
-          alert("✅ Login successful!");
+          // snackbar for successfull login
+                this.snackBar.open('Login Successful ✅', 'Close', {
+                  duration: 3000,        
+                  verticalPosition: 'top',
+                  horizontalPosition: 'end',
+                  panelClass: ['bg-red-600', 'text-white'] 
+                });
+          
+  
           this.router.navigate(['/dashboard'], { replaceUrl: true });
         } else {
-          alert("❌ Invalid Roll Number or Password");
+            this.snackBar.open('❌ Invalid Username or Password', 'Close', {
+                  duration: 3000,        
+                  verticalPosition: 'bottom',
+                  horizontalPosition: 'center',
+                  panelClass: ['bg-red-600', 'text-white'] 
+                });
         }
       },
       error: (err) => {
