@@ -4,11 +4,11 @@
 
     <h1 class="text-4xl pl-[70px] pt-[70px] font-bold mb-[70px]">Student's Login</h1>
 
-      <form class="example-form" action="">
+      <form class="example-form" (ngSubmit)="onLogin()">
 
          <mat-form-field class="example-full-width">
          <mat-label>Username</mat-label>
-         <input matInput placeholder="Enter your username" name="username" value="">
+         <input matInput placeholder="Enter your username" [(ngModel)]="username" name="username" required>
          </mat-form-field>
 
          <mat-form-field class="example-full-width">
@@ -17,7 +17,7 @@
           matInput
           [type]="hide ? 'password' : 'text'"
           [(ngModel)]="password" name="password"
-          placeholder="Enter your password"
+          placeholder="Enter your password" required
          />
          <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
