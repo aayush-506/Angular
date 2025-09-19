@@ -21,9 +21,10 @@ attendancePercentage! : Observable<number>
 
   constructor(private dashboardDataService : DashboardData){}
  ngOnInit() {
+  const studentID = this.dashboardDataService.getCurrentStudentId();
   this.dashboardDataService.loadAttendance();
   this.attendance = this.dashboardDataService.getAttendanceData().pipe(
-    map(data => data.filter(a => a.studentId == 1))
+    map(data => data.filter(a => a.studentId == studentID))
   );
 
   this.attendancePercentage = this.dashboardDataService.getCurrentAttendance();
