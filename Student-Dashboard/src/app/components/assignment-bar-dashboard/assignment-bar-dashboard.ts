@@ -12,16 +12,21 @@ import { CommonModule } from '@angular/common';
 })
 export class AssignmentBarDashboard {
 @Input() assignment! : Assignment;
-today: Date = new Date();
-//finding remaining days
-getRemainingDays(dueDate: string | Date): number {
-    const due = new Date(dueDate).getTime(); // due date in ms
-    const now = new Date().getTime();        // current date in ms
 
-    const diff = due - now;                  // difference in ms
-    const remainingDays = Math.ceil(diff / (1000 * 60 * 60 * 24)); // convert to days
+today : Date = new Date();
+diffInDays : string = "";
 
-    return remainingDays > 0 ? remainingDays : 0; // return 0 if past due
-  }
+getRemaining(dueDate: string){
+  const input = dueDate; 
+  const [day, month, year] = input.split("/");
+
+  const formattedDueDate = `${year}-${month}-${day}`;
+
+  const date1 = new Date(formattedDueDate);
+  const date2 = new Date(this.today)
+ 
+  const diffInMs = date1.getTime() - date2.getTime();
+  this.diffInDays = (diffInMs / (1000 * 60 * 60 * 24)).toFixed(0); 
+}
 
 }
