@@ -44,15 +44,16 @@ export class MainDashboard {
   constructor(private dashboardDataService : DashboardData){}
 
   ngOnInit(){
+    const studentID = this.dashboardDataService.getCurrentStudentId();
     this.gpa = this.dashboardDataService.getGpa();
     this.percentage = this.dashboardDataService.getCurrentAttendance();
     this.pendingCount = this.dashboardDataService.getAssignmentsData().pipe(
-    map(data => data.filter(a => a.studentId === 1 && a.status === "pending").length));
-    this.allAssignment = this.dashboardDataService.getAssignmentsData().pipe(map(data => data.filter(a=>a.studentId == 1).length));
+    map(data => data.filter(a => a.studentId == studentID && a.status === "pending").length));
+    this.allAssignment = this.dashboardDataService.getAssignmentsData().pipe(map(data => data.filter(a=>a.studentId == studentID).length));
     this.latestAnnouncement = this.dashboardDataService.getLatestAnnouncement();
 
-    this.assignments = this.dashboardDataService.getAssignmentsData().pipe(map(data=>data.filter(a=>a.studentId==1 && a.status === "pending")));
-    this.grades = this.dashboardDataService.getGradesData().pipe(map(data=>data.filter(a=>a.studentId == 1)));
+    this.assignments = this.dashboardDataService.getAssignmentsData().pipe(map(data=>data.filter(a=>a.studentId==studentID && a.status === "pending")));
+    this.grades = this.dashboardDataService.getGradesData().pipe(map(data=>data.filter(a=>a.studentId == studentID)));
   }
 
 }
